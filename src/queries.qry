@@ -1,0 +1,12 @@
+query selectDiplomas {
+  description: "Select all Diplomas"
+  statement:
+      SELECT org.example.mynetwork.Diploma
+}
+
+query selectDiplomaByHash {
+  description: "Select diploma asset by ipfs hash"
+  statement:
+      SELECT org.example.mynetwork.Diploma
+          WHERE (ipfsUrl == _$ipfsUrl)
+}

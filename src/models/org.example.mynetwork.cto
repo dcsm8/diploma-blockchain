@@ -1,0 +1,47 @@
+/**
+ * Certificates Network
+ */
+namespace org.example.mynetwork
+
+enum TypeProgram {
+  o DOCTORADO
+  o MAESTRIA
+  o INGENIERIA
+  o TECNOLOGIA
+  o DIPLOMADO
+  o SEMINARIO
+  o CURSO
+}
+
+asset Diploma identified by diplomaId {
+    o String diplomaId
+    o String ipfsUrl
+    o Boolean valid
+    o DateTime date
+    --> University university
+    --> Student student
+    --> Program program 
+}
+
+asset Program identified by programId {
+    o String programId
+    o String title
+    o TypeProgram typeProgram        
+}
+
+participant University identified by universityId {
+    o String universityId
+    o String name
+}
+
+participant Student identified by studentId {
+    o String studentId
+    o String firstName
+    o String lastName
+    o String email
+}
+
+transaction PublishDiploma {
+  --> Diploma diploma
+  --> Student student
+}
