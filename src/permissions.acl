@@ -11,6 +11,22 @@ rule DiplomaRule {
     action: ALLOW
 }
 
+rule DiplomaDeleteRule {
+    description: "Cannot delete diploma"
+    participant: "org.example.mynetwork.Student"
+    operation: DELETE
+    resource: "org.example.mynetwork.Diploma"
+    action: DENY
+}
+
+rule NetworkAdminUserDeleteDiploma {
+    description: "Cannot delete diploma"
+    participant: "org.hyperledger.composer.system.NetworkAdmin"
+    operation: DELETE
+    resource: "org.example.mynetwork.Diploma"
+    action: DENY
+}
+
 rule SimpleRule {
     description: "Description of the ACL rule"
     participant: "org.example.mynetwork.Student"
